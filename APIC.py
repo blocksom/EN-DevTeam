@@ -36,6 +36,17 @@ class apic: #this creates the apic class
         # This sets the 'response' variable to the output of the API call,
         # formatted in json, leveraging the 'get' method of the requests
         # standard package
-        response = requests.get(url, headers=header).json()
-        vlan = response["response"]
-        return vlan
+        response = requests.get(url, headers=header)
+        #vlan = response["response"]
+        #return vlan
+        #print response.text
+        return response.text
+
+    # Remove duplicate elements
+    def removeDup(self, duplicate):
+       final_list = []
+       for num in duplicate:
+          if num not in final_list:
+             final_list.append(num)
+
+       return final_list
