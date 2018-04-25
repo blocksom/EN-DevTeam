@@ -37,5 +37,5 @@ class apic: #this creates the apic class
         # formatted in json, leveraging the 'get' method of the requests
         # standard package
         response = requests.get(url, headers=header).json()
-    
-        return response
+        vlan = response["response"]
+        return vlan

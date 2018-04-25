@@ -17,4 +17,5 @@ newTicket = apic().getTicket(APIC, USERNAME, PASSWORD)
 # it's an example of an API call and returns the json response
 msg = apic().getVlans(APIC, newTicket)
 print(msg)
-print(type(msg["response"]))
+print(msg[0])
+print(msg[1])
