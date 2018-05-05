@@ -2,8 +2,17 @@ import requests
 from SPARK import spark
 
 
-example_post = spark().postMessage("ZWE3NzEwNTEtMDVkZC00MmI2LTg5NGEtOTcyZGM4ZWJmNDliZGNiMjA2ZGUtYmQx", "Y2lzY29zcGFyazovL3VzL1JPT00vMmE3OTVlM2YtZjkwNS0zMGE3LTg4NTAtOGFkODY5N2IzOWM2", "MAGIC")
 
-example_get = spark().getMessage("ZWE3NzEwNTEtMDVkZC00MmI2LTg5NGEtOTcyZGM4ZWJmNDliZGNiMjA2ZGUtYmQx", "Y2lzY29zcGFyazovL3VzL1JPT00vMmE3OTVlM2YtZjkwNS0zMGE3LTg4NTAtOGFkODY5N2IzOWM2")
+bot_token = "ZWE3NzEwNTEtMDVkZC00MmI2LTg5NGEtOTcyZGM4ZWJmNDliZGNiMjA2ZGUtYmQx" #Nicole's bot token #the only parameter that must be statically defined
+bot_message = "POST MESSAGE HERE"
 
-print (example_get)
+room_id = spark().getRoom(bot_token)
+
+get_message = spark().getMessage(bot_token, room_id)
+
+post_message = spark().postMessage(bot_token, room_id, bot_message)
+
+
+
+
+
