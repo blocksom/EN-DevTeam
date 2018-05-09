@@ -1,6 +1,6 @@
-import json, urllib2
+import json, urllib2 #imports necessary standard packages
 
-class spark:
+class spark: #this creates the spark class
 
     # GET username and message from Spark Room at 'url' 
     def sendSparkGET(self, url, bearer):

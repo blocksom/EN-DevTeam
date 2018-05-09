@@ -1,7 +1,5 @@
 import requests, json #imports necessary standard packages
 
-#requests.packages.urllib2.disable_warnings()
-
 class apic: #this creates the apic class
 
     # This method generates an API Post call to generate a unique service
@@ -35,7 +33,8 @@ class apic: #this creates the apic class
 
         # This sets the 'response' variable to the output of the API call,
         # formatted in json, leveraging the 'get' method of the requests
-        # standard package
+        # standard package, and then manipulates the text to consumable
+        # bullet points
         response = requests.get(url, headers=header)
         parsed = json.loads(response.text)
         apicList = parsed['response']
@@ -44,6 +43,8 @@ class apic: #this creates the apic class
                 msg+='\n- '+obj
         return msg
 
+    # This method generates and API Get call to receive the devices operating
+    # on the network
     def getDevices(self, ip, ticket):
 
         # These two variables define the necessary inputs to make an API
@@ -51,6 +52,10 @@ class apic: #this creates the apic class
         url = "https://" + ip + "/api/v1/topology/custom"
         header = {"Content-Type": "application/json", "X-Auth-Token": ticket}
 
+        # This sets the 'response' variable to the output of the API call,
+        # formatted in json, leveraging the 'get' method of the requests
+        # standard package, and then manipulates the text to consumable
+        # bullet points
         response = requests.get(url, headers=header)
         parsed = json.loads(response.text)
         apicList = parsed['response']['nodes']
@@ -60,6 +65,8 @@ class apic: #this creates the apic class
                 msg+='\n\n'+'**'+obj['label']+'**: \n- Platform: '+obj['deviceType']+'  \n- IP: '+obj['ip']
         return msg
 
+    # This method generates and API Get call to receive the hosts operating
+    # on the network
     def getHosts(self, ip, ticket):
 
         # These two variables define the necessary inputs to make an API
@@ -67,6 +74,10 @@ class apic: #this creates the apic class
         url = "https://" + ip + "/api/v1/host"
         header = {"Content-Type": "application/json", "X-Auth-Token": ticket}
 
+        # This sets the 'response' variable to the output of the API call,
+        # formatted in json, leveraging the 'get' method of the requests
+        # standard package, and then manipulates the text to a consumable
+        # table
         response = requests.get(url, headers=header)
         parsed = json.loads(response.text)
         apicList = parsed['response']
